@@ -84,6 +84,13 @@ df_copia.corr()
 
 sns.heatmap(df_copia.corr())
 
+#Verificar se existem casas com +4 quartos e 5 banheiros
+df_copia.loc[(df_copia['bedrooms'] > 4) & (df_copia['bathrooms'] >= 5.00)]
 
+#Verificar valor total arrecado por cada vendedor nas vendas
+grouped = df_copia.groupby('id')['price'].sum().reset_index()
+
+sorted = grouped.sort_values(by='price', ascending=False)
+sorted
 
 df_copia.to_excel('teste.xlsx', index=False)
